@@ -1,0 +1,70 @@
+./pivx-install
+
+find . -type f -print0 | sudo xargs -0 sed -i 's/PivX/GiliCoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/Pivx/Gilicoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/PiVX/GiliCoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/PiVx/GiliCoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/pivX/GiliCoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/pivx/gilicoin/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/PIVX/GILI/g'
+
+find . -type f -print0 | sudo xargs -0 sed -i 's/51472/31770/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/51473/31771/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/51474/31772/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/51475/31773/g'
+
+openssl ecparam -genkey -name secp256k1 -out genesiscoinbase.pem
+openssl ec -in genesiscoinbase.pem -text > genesiscoinbase.hex
+sed -n -e '7p' -e '8p' -e '9p' -e '10p' -e '11p'  genesiscoinbase.hex | tr '\n' ' ' | sed -r 's/[ :]+//g' > genesiscoinbase.txt
+
+-----> auto borrar IPS (vSeed)
+
+chainparams.cpp:
+119: date +%s
+120: 0
+122: 200
+
+226: 0x90 -> 0xe5
+227: 0xc4 -> 0xa2
+228: 0xfd -> 0xff
+229: 0xe9 -> 0x91
+--> també a 340 i 460
+
+
+** missing from example**: 
+vAlertPubKey = ParseHex("04ae6724abca5c2e2e9524d3cd10a303e0ef3f02d324bac4d06aceb873fb8591f1a968d9a2e5ac7024d5a45643d189b99015314d7ef1ff5f8799b9680d6e668471");
+
+65: genesiscoinbase.txt  -> al segon intent ho he afegit a 156:genesiscoinbase.txt
+
+find . -type f -print0 | sudo xargs -0 sed -i 's/1454124731/--aqui valor date +%s --/g'
+find . -type f -print0 | sudo xargs -0 sed -i 's/1454124731/1588690617/g'
+
+156: 0x01
+157: 0x01
+269: 0x01
+270: 0x01
+386: 0x01
+387: 0x01
+
+95 - boost::assign::map_list_of (0, uint256S("0x01")); 
+96-115 comentat //
+127-131 lo mateix
+120 - 0
+155 - comentat //
+
+
+*** no he fet ***: In the main.cpp file I changed the following int64_t nSubsidy = 0;
+
+*** no he estic segur ***: pas 7, eliminar IPs (233-234, 349-350), video 2 10:00
+*** no he estic segur ***: pas 7, eliminar IPs (chainparamsseeds.h)  {{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}, 31770}
+
+
+
+
+
+
+sudo chmod +x autogen.sh
+
+
+
+
